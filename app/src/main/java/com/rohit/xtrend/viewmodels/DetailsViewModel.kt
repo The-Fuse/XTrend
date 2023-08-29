@@ -18,7 +18,7 @@ class DetailsViewModel @Inject constructor(private val repository: XTrendReposit
     
     init {
         viewModelScope.launch {
-            repository.getTweets("motivation")
+            repository.getTweets("android")
         }
     }
 }

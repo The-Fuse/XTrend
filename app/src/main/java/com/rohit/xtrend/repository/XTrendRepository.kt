@@ -24,7 +24,7 @@ class XTrendRepository @Inject constructor(private val xTrendApi: XTrendApi) {
         }
     }
     suspend fun getTweets(category: String){
-        val response =  xTrendApi.getTweets(category)
+        val response =  xTrendApi.getTweets("tweets[?(@.category==\"$category\")]")
         if (response.isSuccessful && response.body() != null){
             _tweets.emit(response.body()!!)
         }
