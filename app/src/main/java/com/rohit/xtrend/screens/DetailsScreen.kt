@@ -13,23 +13,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rohit.xtrend.viewmodels.DetailsViewModel
 
 @Composable
-fun DetailsScreen() {
-    val detailsViewModel: DetailsViewModel = viewModel()
+fun detailsScreen() {
+    val detailsViewModel: DetailsViewModel = hiltViewModel()
     val tweets = detailsViewModel.tweets.collectAsState()
 
     LazyColumn(content = {
         items(tweets.value){
-            TweetListItem(it.text)
+            tweetListItem(it.text)
         }
     })
 }
 
 @Composable
-fun TweetListItem(tweet: String) {
+fun tweetListItem(tweet: String) {
 
     Card(modifier = Modifier.fillMaxWidth().padding(16.dp),
         border = BorderStroke(1.dp, Color(0xFFCCCCCC)),
